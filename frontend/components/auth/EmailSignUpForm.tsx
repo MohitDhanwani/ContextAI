@@ -106,9 +106,9 @@ export function EmailSignUpForm() {
           <input
             type={showPassword ? "text" : "password"}
             {...register("confirmPassword")}
-            className={`w-full bg-[#0a0a0a] border ${
-              errors.confirmPassword ? "border-error" : "border-border focus:border-[#555555]"
-            } h-[40px] rounded-md px-3 pr-10 text-primary text-[14px] outline-none transition-colors duration-150`}
+            className={`w-full bg-surface border ${
+              errors.confirmPassword ? "border-error" : "border-border focus:border-accent-ink focus:ring-1 focus:ring-accent-ink"
+            } h-[40px] rounded-[4px] px-3 pr-10 text-primary text-[14px] outline-none transition-all duration-200`}
           />
         </div>
         {errors.confirmPassword && <span className="text-[12px] text-error">{errors.confirmPassword.message}</span>}
@@ -117,10 +117,10 @@ export function EmailSignUpForm() {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full bg-accent hover:bg-accent-hover text-[#0a0a0a] font-medium h-[42px] rounded-md flex items-center justify-center transition-colors duration-150 disabled:opacity-70 disabled:cursor-not-allowed mt-2"
+        className="w-full bg-accent-highlight hover:brightness-90 text-canvas font-medium h-[42px] rounded-[4px] flex items-center justify-center transition-all duration-200 disabled:opacity-70 disabled:cursor-not-allowed mt-2"
       >
         {isSubmitting ? (
-          <div className="w-4 h-4 border-2 border-[#0a0a0a]/30 border-t-[#0a0a0a] rounded-full animate-spin" />
+          <div className="w-4 h-4 border-2 border-canvas/30 border-t-canvas rounded-full animate-spin" />
         ) : (
           "Create account"
         )}

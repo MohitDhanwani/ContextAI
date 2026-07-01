@@ -19,7 +19,6 @@ export function Sidebar({ sessions, activeSessionId, onSelectSession, onNewChat 
   const [email, setEmail] = useState<string>("user@example.com");
 
   useEffect(() => {
-    // Attempt to decode email from JWT token in local storage if possible, otherwise keep dummy
     const token = getAuthToken();
     if (token) {
       try {
@@ -37,21 +36,29 @@ export function Sidebar({ sessions, activeSessionId, onSelectSession, onNewChat 
   };
 
   return (
-    <div className="w-[260px] bg-surface border-r border-border flex flex-col h-screen shrink-0">
-      <div className="p-[20px_16px] font-display text-[16px] text-primary">
-        PDFChat
+    <div className="w-[280px] bg-canvas border-r border-border flex flex-col h-screen shrink-0">
+      <div className="p-5 font-display font-medium text-[16px] text-primary flex items-center justify-between">
+        <span>PDFChat</span>
       </div>
       
-      <div className="px-4 mb-2">
+      <div className="px-4 mb-4">
         <button
           onClick={onNewChat}
-          className="w-full h-[34px] rounded-[6px] border border-border bg-transparent text-secondary text-[12px] font-body hover:border-[#3a3a3a] hover:text-primary transition-colors duration-150"
+          className="w-full h-[36px] rounded-[4px] border border-border bg-surface text-primary text-[13px] font-medium hover:border-accent-ink transition-colors duration-150 flex items-center justify-center gap-2"
         >
-          + New Chat
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+          New Chat
         </button>
       </div>
 
-      <div className="flex-1 p-2 overflow-y-auto flex flex-col gap-1 custom-scrollbar">
+      <div className="px-4 pb-2 text-[11px] font-mono tracking-widest text-muted uppercase">
+        Documents
+      </div>
+
+      <div className="flex-1 overflow-y-auto flex flex-col custom-scrollbar">
         {sessions.map((session) => (
           <SidebarItem
             key={session.id}
@@ -62,8 +69,8 @@ export function Sidebar({ sessions, activeSessionId, onSelectSession, onNewChat 
         ))}
       </div>
 
-      <div className="p-[12px_16px] border-t border-border flex justify-between items-center text-[12px] shrink-0 mt-auto">
-        <span className="text-muted truncate mr-2">{email}</span>
+      <div className="p-4 border-t border-border flex justify-between items-center text-[13px] shrink-0 mt-auto bg-surface">
+        <span className="text-muted truncate mr-2 font-mono text-[11px]">{email}</span>
         <button 
           onClick={handleSignOut}
           className="text-muted hover:text-error transition-colors"

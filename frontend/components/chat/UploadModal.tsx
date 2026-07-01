@@ -84,18 +84,18 @@ export function UploadModal({ isOpen, onClose, onUploadSuccess }: UploadModalPro
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.96, opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="bg-surface border border-border rounded-[12px] p-[32px] w-full max-w-[440px]"
+            className="bg-surface border border-border rounded-[4px] p-8 w-full max-w-[440px] shadow-xl"
           >
-            <h2 className="font-body font-medium text-[16px] text-primary mb-1">
+            <h2 className="font-display font-medium text-[18px] text-primary mb-1">
               Upload a PDF
             </h2>
-            <p className="font-body font-light text-[13px] text-secondary mb-6">
+            <p className="font-body text-[14px] text-muted mb-6">
               Start a new chat session from a PDF document.
             </p>
 
             <div
-              className={`border rounded-[8px] p-[40px_24px] flex flex-col items-center justify-center text-center cursor-pointer transition-colors ${
-                isDragging ? "border-dashed border-[#555555] bg-[#161616]" : "border-dashed border-[#333333] hover:border-[#444444]"
+              className={`border rounded-[4px] p-10 flex flex-col items-center justify-center text-center cursor-pointer transition-colors duration-200 ${
+                isDragging ? "border-dashed border-accent-ink bg-surface-raised" : "border-dashed border-border hover:border-accent-ink"
               }`}
               onDragOver={handleDragOver}
               onDragLeave={handleDragLeave}
@@ -111,30 +111,30 @@ export function UploadModal({ isOpen, onClose, onUploadSuccess }: UploadModalPro
               />
               
               {file ? (
-                <div className="flex flex-col items-center">
+                <div className="flex flex-col items-center font-body">
                   <span className="text-primary text-[14px] font-medium">{file.name}</span>
-                  <span className="text-muted text-[12px] mt-1">
+                  <span className="text-muted text-[12px] mt-1 font-mono tracking-wide">
                     {(file.size / 1024 / 1024).toFixed(2)} MB
                   </span>
                 </div>
               ) : (
-                <>
-                  <span className="text-muted text-[14px]">Drop your PDF here</span>
-                  <span className="text-muted text-[13px] mt-1">or click to browse</span>
-                </>
+                <div className="font-body">
+                  <span className="text-primary text-[14px] block">Drop your PDF here</span>
+                  <span className="text-muted text-[13px] mt-1 block">or click to browse</span>
+                </div>
               )}
             </div>
 
-            {error && <div className="text-error text-[13px] mt-3">{error}</div>}
+            {error && <div className="text-error text-[13px] mt-3 font-body">{error}</div>}
 
             <div className="mt-8 flex flex-col items-center gap-4">
               <button
                 onClick={handleUpload}
                 disabled={!file || isUploading}
-                className="w-full bg-accent text-[#0a0a0a] font-medium h-[40px] rounded-md flex items-center justify-center transition-colors hover:bg-accent-hover disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full bg-accent-highlight text-canvas font-medium h-[42px] rounded-[4px] flex items-center justify-center transition-all duration-200 hover:brightness-90 disabled:opacity-50 disabled:cursor-not-allowed font-body"
               >
                 {isUploading ? (
-                  <div className="w-4 h-4 border-2 border-[#0a0a0a]/30 border-t-[#0a0a0a] rounded-full animate-spin" />
+                  <div className="w-4 h-4 border-2 border-canvas/30 border-t-canvas rounded-full animate-spin" />
                 ) : (
                   "Upload"
                 )}
@@ -147,7 +147,7 @@ export function UploadModal({ isOpen, onClose, onUploadSuccess }: UploadModalPro
                   onClose();
                 }}
                 disabled={isUploading}
-                className="text-muted text-[13px] hover:text-secondary transition-colors"
+                className="text-muted text-[13px] hover:text-primary transition-colors font-body"
               >
                 Cancel
               </button>

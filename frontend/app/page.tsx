@@ -7,7 +7,7 @@ import { FooterSection } from "@/components/landing/FooterSection";
 
 export default function LandingPage() {
   return (
-    <main className="min-h-screen bg-base selection:bg-accent selection:text-[#0a0a0a]">
+    <main className="min-h-screen bg-canvas selection:bg-accent-highlight selection:text-canvas">
       <Navbar />
       <HeroSection />
       <HowItWorksSection />

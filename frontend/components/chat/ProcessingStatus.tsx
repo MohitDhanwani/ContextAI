@@ -1,16 +1,18 @@
+import { motion } from "framer-motion";
+
 export function ProcessingStatus({ status, onRetry }: { status: "processing" | "failed", onRetry: () => void }) {
   if (status === "failed") {
     return (
-      <div className="flex-1 flex flex-col items-center justify-center p-6 h-full bg-base text-center">
-        <div className="text-error font-body font-medium text-[15px] mb-2">
+      <div className="flex-1 flex flex-col items-center justify-center p-6 h-full bg-canvas text-center">
+        <div className="text-error font-display text-[18px] mb-2">
           Processing failed
         </div>
-        <div className="text-muted font-body font-light text-[13px] mb-6">
-          Try uploading the PDF again.
+        <div className="text-muted font-body text-[14px] mb-6">
+          There was an error reading this document.
         </div>
         <button
           onClick={onRetry}
-          className="h-[34px] rounded-[6px] border border-border bg-transparent text-secondary text-[12px] font-body px-6 hover:border-[#3a3a3a] hover:text-primary transition-colors duration-150"
+          className="h-[36px] rounded-[4px] border border-border bg-transparent text-primary text-[13px] font-medium font-body px-6 hover:border-accent-ink transition-colors duration-150"
         >
           Try again
         </button>
@@ -19,22 +21,33 @@ export function ProcessingStatus({ status, onRetry }: { status: "processing" | "
   }
 
   return (
-    <div className="flex-1 flex flex-col items-center justify-center p-6 h-full bg-base text-center">
-      <div className="w-[10px] h-[10px] rounded-full bg-accent animate-[pulse-opacity_1.5s_infinite] mb-6" />
-      <div className="text-secondary font-body font-normal text-[15px] mb-2">
-        Processing your PDF...
+    <div className="flex-1 flex flex-col items-center justify-center p-6 h-full bg-canvas text-center">
+      {/* Progressive highlight animation */}
+      <div className="w-[200px] flex flex-col gap-3 mb-8 bg-surface p-4 border border-border shadow-sm">
+        {[0, 1, 2].map((i) => (
+          <div key={i} className="h-[6px] bg-border/40 relative rounded-sm overflow-hidden">
+            <motion.div 
+              className="absolute inset-y-0 left-0 bg-accent-highlight"
+              initial={{ width: 0 }}
+              animate={{ width: "100%" }}
+              transition={{ 
+                duration: 1.5, 
+                ease: "linear", 
+                repeat: Infinity, 
+                repeatDelay: 0.5,
+                delay: i * 0.5 
+              }}
+            />
+          </div>
+        ))}
       </div>
-      <div className="text-muted font-body font-light text-[13px]">
-        This takes about 15 seconds
+      
+      <div className="text-primary font-display font-medium text-[18px] mb-2">
+        Reading document...
       </div>
-
-      <style dangerouslySetInnerHTML={{__html: `
-        @keyframes pulse-opacity {
-          0% { opacity: 1; }
-          50% { opacity: 0.3; }
-          100% { opacity: 1; }
-        }
-      `}} />
+      <div className="text-muted font-body text-[14px]">
+        Parsing text and generating semantic chunks
+      </div>
     </div>
   );
 }

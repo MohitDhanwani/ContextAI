@@ -21,23 +21,23 @@ export function Navbar() {
   return (
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrolled ? "backdrop-blur-md bg-base/80 border-b border-border" : "bg-transparent border-b border-transparent"
+        scrolled ? "backdrop-blur-md bg-canvas/80 border-b border-border" : "bg-transparent border-b border-transparent"
       }`}
     >
-      <div className="max-w-[1120px] mx-auto px-6 h-[72px] flex items-center justify-between">
-        <Link href="/" className="font-display text-[18px] text-primary">
+      <div className="max-w-[1280px] mx-auto px-6 h-[72px] flex items-center justify-between">
+        <Link href="/" className="font-display font-medium text-[20px] tracking-tight text-primary">
           PDFChat
         </Link>
         <div className="flex items-center gap-6">
           <Link
             href={isAuth ? "/app" : "/auth/signin"}
-            className="text-[14px] text-secondary hover:text-primary transition-colors duration-200"
+            className="text-[14px] text-muted hover:text-primary transition-colors duration-200"
           >
             {isAuth ? "Dashboard" : "Sign In"}
           </Link>
           <Link
             href={isAuth ? "/app" : "/auth/signup"}
-            className="bg-accent text-[#0a0a0a] font-medium text-[14px] px-4 py-1.5 rounded-[4px] hover:bg-accent-hover transition-colors duration-200"
+            className="bg-accent-highlight text-canvas font-medium text-[14px] px-4 py-1.5 rounded-[4px] hover:brightness-90 transition-all duration-200"
           >
             Get Started
           </Link>
