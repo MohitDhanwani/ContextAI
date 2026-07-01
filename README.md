@@ -2,7 +2,9 @@
 
 Welcome to the PDF Chat RAG (Retrieval-Augmented Generation) project! 
 
-### 🎥 [DEMO](https://drive.google.com/file/d/17I4s7YzyQkf9uTY2g2UbMg8DSLQj4NbP/view?usp=sharing)
+<p align="center">
+  <h3>🎥 [PROJECT DEMO VIDEO](https://drive.google.com/file/d/17I4s7YzyQkf9uTY2g2UbMg8DSLQj4NbP/view?usp=sharing)</h3>
+</p>
 
 ## 👋 What is this project?
 This application allows users to upload PDF documents and have intelligent conversations with them. Instead of just searching for keywords, the app reads the document, understands the context, and uses AI to answer your questions based *strictly* on the content of the PDF.
